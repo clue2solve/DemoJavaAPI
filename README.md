@@ -1,1 +1,1 @@
-# DemoJavaApi
+# Clue2AppDemoJavaApi

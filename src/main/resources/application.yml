@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: clue2app-java-api-service
+
+  profiles:
+    active: default
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    url: /api-docs
+  enable-native-support: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    root: INFO
+
+version: @project.version@
