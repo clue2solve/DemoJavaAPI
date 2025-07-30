@@ -42,10 +42,11 @@ public class AwsSqsClientConfig {
 
         return AmazonSQSAsyncClientBuilder.standard()
                 .withRegion(region == null || region.isEmpty() ? "us-west-2" : region)
-                .withCredentials(new DefaultAWSCredentialsProviderChain()
+                .withCredentials(
 /*
-                new AWSStaticCredentialsProvider(new BasicAWSCredentials(queueConfig.get("accessKey"), queueConfig.get("secretKey")))
+                    new DefaultAWSCredentialsProviderChain()
 */
+                    new AWSStaticCredentialsProvider(new BasicAWSCredentials(queueConfig.get("accessKey"), queueConfig.get("secretKey")))
                 )
                 .build();
     }
