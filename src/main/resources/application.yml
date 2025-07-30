@@ -21,8 +21,16 @@ management:
 server:
   port: ${PORT:8080}
 
+clue2app:
+  queue:
+    enabled: true
+    name: my-queue-1
+
 logging:
   level:
     root: INFO
+    io:
+      clue2solve: DEBUG
+      clue2app: DEBUG
 
 version: @project.version@
