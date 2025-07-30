@@ -16,9 +16,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <repositories>
-        <repository>
+        <!--repository>
             <id>clue2app-Clue2App</id>
             <url>https://clue2app-776809830581.d.codeartifact.us-west-2.amazonaws.com/maven/Clue2App/</url>
+        </repository-->
+        <repository>
+            <id>repsy</id>
+            <url>https://repo.repsy.io/mvn/admleu/clue2solve</url>
         </repository>
     </repositories>
 
