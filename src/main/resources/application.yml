@@ -23,7 +23,6 @@ server:
 
 clue2app:
   queue:
-    enabled: true
     name: my-queue-1
 
 logging:
