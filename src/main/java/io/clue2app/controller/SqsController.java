@@ -1,6 +1,6 @@
 package io.clue2app.controller;
 
-import io.clue2app.sqs.SqsService;
+import io.clue2app.service.SqsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,20 @@ public class SqsController {
 
 	private final Logger logger = LoggerFactory.getLogger(SqsController.class);
 
-	static SqsService sqsMessageListener;
+	static SqsService service;
 
-	public SqsController(@Autowired SqsService sqsListener) {
-		sqsMessageListener = sqsListener;
+	public SqsController(@Autowired SqsService sqsService) {
+		service = sqsService;
 	}
 
 	@GetMapping("/sqs/getOne")
 	public ResponseEntity<Object> getOne() {
-		return new ResponseEntity<>(sqsMessageListener.getOne(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getOne(), HttpStatus.OK);
 	}
 
 	@PostMapping("/sqs/send")
-	ResponseEntity<Object> createProject(@RequestBody final Map<String, Object> record) {
-		sqsMessageListener.send(record);
+	ResponseEntity<Object> send(@RequestBody final Map<String, Object> record) {
+		service.send(record);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

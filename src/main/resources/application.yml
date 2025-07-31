@@ -24,6 +24,8 @@ server:
 clue2app:
   queue:
     name: my-queue-1
+  s3:
+    name: my-storage-1
 
 logging:
   level:

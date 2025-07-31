@@ -1,4 +1,4 @@
-package io.clue2app.sqs;
+package io.clue2app.service;
 
 import io.clue2solve.parameters.C2aConfig;
 import org.slf4j.Logger;
@@ -22,23 +22,23 @@ public class SqsService {
     private final String queueName;
 
     public SqsService(
-            @Autowired QueueMessagingTemplate queueTemplate,
+            @Autowired QueueMessagingTemplate queueMessagingTemplate,
             @Autowired final C2aConfig config,
-            @Value("${clue2app.queue.name}") final String queue
+            @Value("${clue2app.queue.name}") final String queueConfigName
     ) {
-        queueMessagingTemplate = queueTemplate;
+        this.queueMessagingTemplate = queueMessagingTemplate;
 
-        final Map<String, String> queueConfig = config.getSection(queue);
+        final Map<String, String> queueConfig = config.getSection(queueConfigName);
 
         if (queueConfig == null || queueConfig.isEmpty()) {
-            logger.error("Queue configuration for '{}' is missing or empty", queue);
+            logger.error("Queue configuration for '{}' is missing or empty", queueConfigName);
             throw new IllegalStateException("Queue configuration is not properly set up");
         }
 
         queueName = queueConfig.get("name");
 
         if (queueName == null || queueName.isEmpty()) {
-            logger.error("Queue name is not specified in the configuration for '{}'", queue);
+            logger.error("Queue name is not specified in the configuration for '{}'", queueConfigName);
             throw new IllegalStateException("Queue name is not properly set up");
         }
     }
