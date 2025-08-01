@@ -43,6 +43,9 @@
 
         <commons-lang3.version>3.14.0</commons-lang3.version>
         <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
+        <clue2app-parameters.version>1.0.2</clue2app-parameters.version>
+        <aws-s3.version>2.32.11</aws-s3.version>
+        <flyway.version>9.22.3</flyway.version>
     </properties>
 
     <dependencies>
@@ -57,6 +60,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-aws-messaging</artifactId>
             <version>2.2.6.RELEASE</version>
@@ -65,8 +73,18 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>2.32.11</version>
+            <version>${aws-s3.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
         </dependency>
 
         <dependency>
@@ -82,15 +100,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <groupId>io.clue2solve</groupId>
+            <artifactId>c2a-parameters</artifactId>
+            <version>${clue2app-parameters.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>io.clue2solve</groupId>
-            <artifactId>c2a-parameters</artifactId>
-            <version>1.0.2</version>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-maven-plugin</artifactId>
+            <version>${flyway.version}</version>
         </dependency>
 
         <!-- Integration tests dependencies -->

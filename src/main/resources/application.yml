@@ -5,6 +5,9 @@ spring:
   profiles:
     active: default
 
+  flyway:
+    enabled: false
+
 springdoc:
   api-docs:
     path: /api-docs
@@ -23,9 +26,14 @@ server:
 
 clue2app:
   queue:
+    enabled: false
     name: my-queue-1
   s3:
+    enabled: false
     name: my-storage-1
+  postgres:
+    enabled: false
+    name: my-db-1
 
 logging:
   level:

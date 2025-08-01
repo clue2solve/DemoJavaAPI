@@ -4,6 +4,7 @@ import io.clue2app.service.S3Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +23,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 @RestController
+@ConditionalOnProperty(name = "clue2app.s3.enabled", havingValue = "true")
 public class S3Controller {
 
 	private final Logger logger = LoggerFactory.getLogger(S3Controller.class);

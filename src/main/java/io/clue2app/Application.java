@@ -5,19 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.github.javafaker.Faker;
 import io.clue2solve.parameters.C2aConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.Map;
 
 @EnableScheduling
-@SpringBootApplication
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class/*, FlywayAutoConfiguration.class*/ })
 public class Application {
 
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
@@ -42,8 +42,4 @@ public class Application {
 		return new C2aConfig();
 	}
 
-	@Bean
-	public Faker faker() {
-		return new Faker();
-	}
 }
