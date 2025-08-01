@@ -34,6 +34,9 @@ clue2app:
   postgres:
     enabled: false
     name: my-db-1
+  dynamodb:
+    enabled: false
+    name: my-tbl-1
 
 logging:
   level:

@@ -45,6 +45,7 @@
         <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
         <clue2app-parameters.version>1.0.2</clue2app-parameters.version>
         <aws-s3.version>2.32.11</aws-s3.version>
+        <aws-dynamodb.version>2.32.13</aws-dynamodb.version>
         <flyway.version>9.22.3</flyway.version>
     </properties>
 
@@ -75,6 +76,12 @@
             <artifactId>s3</artifactId>
             <version>${aws-s3.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb</artifactId>
+            <version>${aws-dynamodb.version}</version>
         </dependency>
 
         <dependency>
