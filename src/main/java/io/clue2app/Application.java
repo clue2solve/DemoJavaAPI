@@ -1,5 +1,6 @@
 package io.clue2app;
 
+import com.amazonaws.auth.WebIdentityTokenCredentialsProvider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -40,6 +41,14 @@ public class Application {
 	@Bean
 	public C2aConfig config() throws JsonProcessingException {
 		return new C2aConfig();
+	}
+
+	@Bean
+	public WebIdentityTokenCredentialsProvider webIdentityTokenCredentialsProvider() {
+		return WebIdentityTokenCredentialsProvider.builder()
+				.roleArn(System.getenv("AWS_ROLE_ARN"))
+				.webIdentityTokenFile(System.getenv("AWS_WEB_IDENTITY_TOKEN_FILE"))
+				.build();
 	}
 
 }
